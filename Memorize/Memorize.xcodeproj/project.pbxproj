@@ -11,6 +11,8 @@
 		97A9797728A2F54D007288EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A9797628A2F54D007288EA /* ContentView.swift */; };
 		97A9797928A2F54F007288EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97A9797828A2F54F007288EA /* Assets.xcassets */; };
 		97A9797C28A2F54F007288EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97A9797B28A2F54F007288EA /* Preview Assets.xcassets */; };
+		97A9798328A3EC6D007288EA /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A9798228A3EC6D007288EA /* EmojiMemoryGame.swift */; };
+		97A9798528A3EC8E007288EA /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A9798428A3EC8E007288EA /* MemoryGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		97A9797628A2F54D007288EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		97A9797828A2F54F007288EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97A9797B28A2F54F007288EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		97A9798228A3EC6D007288EA /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		97A9798428A3EC8E007288EA /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				97A9797428A2F54D007288EA /* MemorizeApp.swift */,
 				97A9797628A2F54D007288EA /* ContentView.swift */,
+				97A9798228A3EC6D007288EA /* EmojiMemoryGame.swift */,
+				97A9798428A3EC8E007288EA /* MemoryGame.swift */,
 				97A9797828A2F54F007288EA /* Assets.xcassets */,
 				97A9797A28A2F54F007288EA /* Preview Content */,
 			);
@@ -139,6 +145,8 @@
 			files = (
 				97A9797728A2F54D007288EA /* ContentView.swift in Sources */,
 				97A9797528A2F54D007288EA /* MemorizeApp.swift in Sources */,
+				97A9798528A3EC8E007288EA /* MemoryGame.swift in Sources */,
+				97A9798328A3EC6D007288EA /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
