@@ -6,13 +6,26 @@
 //
 
 import Foundation
-import CloudKit
 
 struct MemoryGame<CardContent> where CardContent: Equatable{
-    //MARK - Initilization
+    
+    
+    //MARK - Properties
+    struct Card: Identifiable {
+        
+        var isFaceUp: Bool = false
+        var isMatched: Bool = false
+        var content: CardContent
+        var isPreviouslySeen:Bool = false
+        var id: Int
+        
+    }
+    
     private(set) var cards: Array<Card>
     private var indexOfTheOneAndOnlyFaceUpCard: Int?
+    private(set) var score: Int = 0
     
+    //MARK - Initilization
     init(numberOfPairsOfCards: Int, createCardContent: (Int) ->CardContent) {
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards {
@@ -20,16 +33,10 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex * 2 + 1))
         }
+        cards.shuffle()
     }
     
-    struct Card: Identifiable {
-        
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
-        var content: CardContent
-        var id: Int
-    }
-    
+    //MARK: - Functions
     mutating func choose(_ card  : Card) {
         if let chosenIndex = cards.firstIndex(where: {$0.id == card.id}),
            !cards[chosenIndex].isFaceUp,
@@ -40,13 +47,25 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                 if cards[chosenIndex].content == cards[potentiallyMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentiallyMatchIndex].isMatched = true
+                    score += 2
+                }else
+                {
+                    //If not matched and card is already seen then score should reduce by 1
+                    if cards[chosenIndex].isPreviouslySeen ||
+                        cards[potentiallyMatchIndex].isPreviouslySeen
+                    {
+                        score -= 1
+                    }
                 }
                 indexOfTheOneAndOnlyFaceUpCard = nil
             }
             else
             {
                 for index in cards.indices {
-                    cards[index].isFaceUp = false
+                    if cards[index].isFaceUp{
+                        cards[index].isFaceUp = false
+                        cards[index].isPreviouslySeen = true
+                    }
                 }
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
