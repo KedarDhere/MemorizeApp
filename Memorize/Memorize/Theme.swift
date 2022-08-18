@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Theme {
     var name: String
-    var emojis: Array<String>
+    var emojis: [String]
     var numberOfPairOfCards: Int
     var color: Color
 }
