@@ -13,7 +13,7 @@ class EmojiMemoryGame: ObservableObject {
 
     @Published private var model: MemoryGame<String>
 
-    private let defaultTheme = (
+    private static let defaultTheme = Theme(
             name: "Vehicles",
             emojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒",
                      "🚐", "🛻", "🚚", "🚛", "🚜", "🛺", "✈️", "🚈", "🚂",
@@ -81,7 +81,7 @@ class EmojiMemoryGame: ObservableObject {
 
     init() {
         // Select the random theme and its data
-        theme = EmojiMemoryGame.themes.randomElement() ?? defaultTheme
+        theme = EmojiMemoryGame.themes.randomElement() ?? EmojiMemoryGame.defaultTheme
 
         // Cards should be shuffled always
         theme.emojis.shuffle()
@@ -105,7 +105,7 @@ class EmojiMemoryGame: ObservableObject {
 
     func newGame() {
         // Select the random theme and its data
-        theme = EmojiMemoryGame.themes.randomElement() ?? defaultTheme
+        theme = EmojiMemoryGame.themes.randomElement() ?? EmojiMemoryGame.defaultTheme
 
         // Cards should be shuffled always
         theme.emojis.shuffle()
