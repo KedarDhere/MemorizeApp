@@ -13,6 +13,15 @@ class EmojiMemoryGame: ObservableObject {
 
     @Published private var model: MemoryGame<String>
 
+    private let defaultTheme = (
+            name: "Vehicles",
+            emojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🚒",
+                     "🚐", "🛻", "🚚", "🚛", "🚜", "🛺", "✈️", "🚈", "🚂",
+                     "🛳", "🚀", "🚡", "🛵", "🚍", "🚔"],
+            numberOfPairOfCards: 10,
+            color: .red
+        )
+
     private(set) var theme: Theme
     private static let themes: [Theme] = [
         Theme(
@@ -69,9 +78,10 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     // MARK: - Initilization
+
     init() {
         // Select the random theme and its data
-        theme = EmojiMemoryGame.themes.randomElement()!
+        theme = EmojiMemoryGame.themes.randomElement() ?? defaultTheme
 
         // Cards should be shuffled always
         theme.emojis.shuffle()
@@ -83,6 +93,7 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     // MARK: - Functions
+
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         MemoryGame( numberOfPairsOfCards: theme.numberOfPairOfCards ,
                      createCardContent: { pairIndex  in theme.emojis[pairIndex] })
@@ -93,9 +104,8 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     func newGame() {
-
         // Select the random theme and its data
-        theme = EmojiMemoryGame.themes.randomElement()!
+        theme = EmojiMemoryGame.themes.randomElement() ?? defaultTheme
 
         // Cards should be shuffled always
         theme.emojis.shuffle()
