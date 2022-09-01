@@ -35,14 +35,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     // MARK: - Functions
     
+    /**
+     This function is used to update the score and card details to statisy the following game conditions: 1. At a time only two cards should be faceUp.
+     2. If the content of the card is matching then update the score by two.
+     3. else facedown all the cards and if the if the any one of the card is already seen then reduce score by one.
+    */
     mutating func choose(_ card: Card) {
-        """
-        This function is used to update the score and card details to statisy the following game conditions:
-        1. At a time only two cards should be faceUp
-        2. If the content of the card is matching then update the score by 2
-        3. else facedown all the cards and if the if the any one of the card is already seen then reduce score by 1
-        """
-        
         guard
             var chosenCard = cards.first(where: {$0.id == card.id}),
             !chosenCard.isFaceUp,
@@ -54,8 +52,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 chosenCard.isMatched = true
                 potentiallyMatchCard.isMatched = true
                 score += 2  // If cards contain is matched then increase the score by 2
-                updateOriginalCard(chosenCard)
-                updateOriginalCard(potentiallyMatchCard)
+                updateDeck(with : chosenCard)
+                updateDeck(with : potentiallyMatchCard)
             }
             indexOfTheOneAndOnlyFaceUpCard = nil
         } else {
@@ -72,17 +70,17 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             }
         }
         chosenCard.isFaceUp.toggle()
-        updateOriginalCard(chosenCard)
+        updateDeck(with: chosenCard)
     }
     
-    private mutating func updateOriginalCard(_ card: Card) {
-        """
-        This function will update the cards in the original set
-        """
+    ///This function will update the cards in the original set.
+    private mutating func updateDeck(with card: Card) {
         guard let indexOfcardToUpdate = cards.firstIndex(where :{$0.id == card.id})
         else { return }
         cards[indexOfcardToUpdate].isFaceUp = card.isFaceUp
         cards[indexOfcardToUpdate].isMatched = card.isMatched
         cards[indexOfcardToUpdate].isPreviouslySeen = card.isPreviouslySeen
     }
+    
 }
+
