@@ -6,7 +6,6 @@
 //
 
 import XCTest
-
 @testable import Memorize
 
 class MemoryGameTests: XCTestCase {
