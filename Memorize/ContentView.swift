@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: - Initilization
     @ObservedObject var viewModel: EmojiMemoryGame
     @State var emojiCount = 8
 

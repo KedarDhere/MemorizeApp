@@ -95,8 +95,10 @@ class EmojiMemoryGame: ObservableObject {
     // MARK: - Functions
 
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
-        MemoryGame( numberOfPairsOfCards: theme.numberOfPairOfCards ,
-                     createCardContent: { pairIndex  in theme.emojis[pairIndex] })
+        MemoryGame(
+            numberOfPairsOfCards: theme.numberOfPairOfCards,
+            createCardContent: { pairIndex  in theme.emojis[pairIndex] }
+        )
     }
 
     func choose(card: MemoryGame<String>.Card) {
